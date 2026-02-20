@@ -1,0 +1,401 @@
+:root {
+  --bg: #0b1220;         /* fundo escuro (moldura/laterais) */
+  --surface: #ffffff;    /* superfície clara (main) */
+  --header: #0b1220;     /* faixa do topo */
+  --text: #111827;       /* texto principal no fundo claro */
+  --muted: #4b5563;      /* texto secundário */
+  --brand: #FCC500;      /* cor destaque do NERDLAB (amarelo) */
+  --hover: #a3b4d4;      /* cor de hover do menu */
+  --focus: #22c55e;      /* cor do foco (acessibilidade) */
+  --card: #f9fafb;         /* fundo do card */
+  --border: #e5e7eb;       /* borda suave */
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* reset básico de margem do navegador */
+body{
+    
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.5;
+    background-color: var(--bg);
+    color: var(--text);
+}
+/* Logo padrão (desktop) */
+.logo-grande {
+    display: block;
+    width: min(480px, 90%);
+    margin: 0 auto;
+}
+
+/* Mini logo escondida no desktop */
+.logo-mini {
+    display: none;
+    margin: 0 auto;
+}
+
+/* Mobile: troca a logo */
+@media (max-width: 640px) {
+.logo-grande {
+    display: none;
+}
+
+.logo-mini {
+    display: block;
+    width: min(320px, 90%);
+}
+}
+
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 8px;
+}
+h1 {
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 12px;
+}
+
+h2 {
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.2;
+    margin: 0 0 14px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+}
+
+h3 a {
+     text-decoration: none;        /* sem sublinhado */
+    color: var(--text);          /* cor normal do título */
+    transition: color .15s ease;    
+}
+
+h3 a:hover {
+    color: var(--brand);
+}
+
+
+p {
+    margin-top: 0;
+    color: var(--muted);
+    margin: 0 0 12px;
+    margin-bottom: 12px;
+}
+
+main{
+    background-color: #ffffff;  
+    border-radius: 16px;       
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 32px);
+}
+main section {
+    margin-bottom: clamp(24px, 6vw, 48px);
+}
+main article:hover {
+    border-color: var(--brand);
+    transform: translateY(-2px);
+    
+}
+
+main article {
+        color: var(--text);
+    text-decoration: none;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    transition: transform .15s ease, border-color .15s ease;
+}
+
+main article h3 a {
+    color: var(--text);
+}
+
+
+header {
+    background-color: var(--header);
+}
+
+header > * {
+        max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 4px;
+    padding-right: clamp(16px, 4vw, 32px);
+    padding-bottom: 4px;
+    padding-left: clamp(16px, 4vw, 32px);
+}
+
+header img {
+    width: 480px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===== MENU (desktop) ===== */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+  flex-wrap: wrap; /* se faltar espaço, ele quebra de forma elegante */
+}
+
+.menu a {
+    font-family: 'Space Grotesk', sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FEFF01;
+
+    padding: 8px 10px;
+    border-radius: 8px;
+
+    transition: background-color .2s ease, color .2s ease, transform .15s ease;
+}
+
+.menu a:hover {
+    background-color: #a3b4d4;
+    color: #0B1220;
+    transform: translateY(-1px);
+}
+
+.menu a:focus-visible {
+    outline: 2px solid #22c55e;
+    outline-offset: 2px;
+}
+
+/* ===== MENU (mobile) ===== */
+@media (max-width: 640px) {
+.menu ul {
+    gap: 10px;          /* menos espaço entre links */
+    row-gap: 8px;       /* controla a distância entre linhas */
+}
+
+.menu a {
+    font-size: 14px;    /* texto menor no celular */
+    padding: 7px 9px;   /* chip menor */
+}
+}
+
+#recentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    align-items: stretch; /* estica as linhas do grid */
+}
+#recentes > h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 8px;
+}
+#recentes article{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+#categorias > h2 {
+  grid-column: 1 / -1; /* título ocupa a linha inteira */
+}
+
+#categorias article {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+}
+
+#contato form {
+    display: grid;
+    gap: 12px;
+    max-width: 560px;
+}
+#contato input,
+#contato textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+#contato input:focus,
+#contato textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+#contato button,
+#contato input[type="submit"] {
+    justify-self: start;
+    background: var(--brand);
+    color: var(--header);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease;
+}
+#contato button:hover,
+#contato input[type="submit"]:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.90);
+}
+
+#contato {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+/* ===== Canais de contato (chips com cor + ícone) ===== */
+#contato nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#contato nav a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform .15s ease, border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+
+/* Ícone padrão */
+#contato nav a::before {
+    content: '🔗';
+    margin-right: 6px;
+}
+
+/* Email */
+#contato nav a.email {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+#contato nav a.email::before {
+    content: '✉️';
+}
+
+/* Instagram */
+#contato nav a.instagram {
+    border-color: #db2777;
+    color: #db2777;
+}
+#contato nav a.instagram::before {
+    content: '📸';
+}
+
+/* GitHub */
+#contato nav a.github {
+    border-color: #111827;
+    color: #111827;
+}
+#contato nav a.github::before {
+    content: '🐙';
+}
+
+/* Hover geral */
+#contato nav a:hover {
+    transform: translateY(-1px);
+    background-color: var(--card);
+}
+
+/* Foco acessível */
+#contato nav a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background-color: var(--header);
+    color: #e5e7eb;
+    margin-top: 32px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 32px);
+
+    display: grid;
+    gap: 12px;
+    justify-items: center;
+    text-align: center;
+}
+
+.footer-logo {
+    width: min(220px, 70%);
+    opacity: 0.9;
+}
+
+.footer-text {
+    color: #cbd5f5;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color .15s ease, transform .15s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.footer-links a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+/* Mobile: footer mais compacto */
+@media (max-width: 640px) {
+    .footer-inner {
+    gap: 10px;
+}
+
+.footer-logo {
+    width: min(180px, 80%);
+}
+}
